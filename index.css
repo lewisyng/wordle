@@ -1,0 +1,25 @@
+#root {
+    display: flex;
+}
+
+.play-field {
+    margin: 0 auto;
+}
+
+.cell {
+    height: 100px;
+    width: 50px;
+    font-size: 4rem;
+}
+
+.exactMatch {
+    background-color: #00ff00;
+}
+
+.match {
+    background-color: yellow;
+}
+
+.noMatch {
+    background-color: #ff0000;
+}
