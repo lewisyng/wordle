@@ -1,0 +1,5 @@
+# fill in default gitignore
+
+node_modules
+.DS_Store
+.env
