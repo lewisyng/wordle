@@ -14,6 +14,7 @@ body {
     --noMatch: #121213;
     --text-col: #D7DADC;
     --cell-border-col: #3A3A3C;
+    --cell-with-input-border-col: #565758;
     --keyboard-key-bg: #818384;
 }
 
@@ -46,6 +47,26 @@ body {
     font-weight: bold;
     border: 2px solid var(--cell-border-col);
     text-align: center;
+}
+
+@keyframes input {
+    0% {
+        transform: scale(1);
+    }
+    20% {
+        transform: scale(0.95);
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.currentCell {
+    animation: input 300ms ease-in-out;
+    border: 2px solid var(--cell-with-input-border-col);
 }
 
 .exactMatch {

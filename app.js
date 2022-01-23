@@ -53,6 +53,7 @@ function addEventListeners() {
 
     const currentCell = getCurrentCell(wordOnCurrentRow);
 
+    currentCell.classList.add('currentCell');
     currentCell.innerText = e.key.toUpperCase();
     wordOnCurrentRow += e.key;
 
