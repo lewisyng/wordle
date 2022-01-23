@@ -53,7 +53,7 @@ function addEventListeners() {
 
     const currentCell = getCurrentCell(wordOnCurrentRow);
 
-    currentCell.innerText = e.key;
+    currentCell.innerText = e.key.toUpperCase();
     wordOnCurrentRow += e.key;
 
     if (!isCurrentRowFull(wordOnCurrentRow)) {

@@ -1,15 +1,25 @@
 body {
     font-family: 'Clear Sans', arial;
+    background: var(--background);
 }
 
 :root {
-    --exactMatch: #00ff00;
-    --match: yellow;
-    --noMatch: #ff0000;
+    --background: #121213;
+    --exactMatch: #538D4E;
+    --match: #B59F3B;
+    --noMatch: #121213;
+    --text-col: #D7DADC;
+    --cell-border-col: #3A3A3C;
+}
+
+#heading {
+    text-align: center;
+    color: var(--text-col); 
 }
 
 #root {
     display: flex;
+    flex-direction: column;
 }
 
 #grid {
@@ -18,16 +28,18 @@ body {
 
 .row {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .cell {
-    height: 80px;
-    width: 80px;
-    line-height: 80px;
-    font-size: 3rem;
-    border: 1px solid black;
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    font-size: 2rem;
+    color: var(--text-col);
+    font-weight: bold;
+    border: 2px solid var(--cell-border-col);
     text-align: center;
 }
 
