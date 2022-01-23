@@ -1,3 +1,7 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
     font-family: 'Clear Sans', arial;
     background: var(--background);
@@ -10,6 +14,7 @@ body {
     --noMatch: #121213;
     --text-col: #D7DADC;
     --cell-border-col: #3A3A3C;
+    --keyboard-key-bg: #818384;
 }
 
 #heading {
@@ -53,4 +58,25 @@ body {
 
 .noMatch {
     background-color: var(--noMatch) !important;
+}
+
+#keyboard {
+    margin: 3rem 0 0 0;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.key {
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    background: var(--keyboard-key-bg);
+    color: var(--text-col);
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
 }
