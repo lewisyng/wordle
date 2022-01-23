@@ -1,25 +1,44 @@
+body {
+    font-family: 'Clear Sans', arial;
+}
+
+:root {
+    --exactMatch: #00ff00;
+    --match: yellow;
+    --noMatch: #ff0000;
+}
+
 #root {
     display: flex;
 }
 
-.play-field {
+#grid {
     margin: 0 auto;
 }
 
+.row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
 .cell {
-    height: 100px;
-    width: 50px;
-    font-size: 4rem;
+    height: 80px;
+    width: 80px;
+    line-height: 80px;
+    font-size: 3rem;
+    border: 1px solid black;
+    text-align: center;
 }
 
 .exactMatch {
-    background-color: #00ff00;
+    background-color: var(--exactMatch) !important;
 }
 
 .match {
-    background-color: yellow;
+    background-color: var(--match) !important;
 }
 
 .noMatch {
-    background-color: #ff0000;
+    background-color: var(--noMatch) !important;
 }

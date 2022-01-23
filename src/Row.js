@@ -15,7 +15,7 @@ export class Row {
 
   createCells() {
     for (let cellNumber = 0; cellNumber < WORD_LENGTH; cellNumber++) {
-      const cell = document.createElement('input');
+      const cell = document.createElement('div');
       cell.classList.add(
         'cell',
         `cell-${this.rowNumber}`,

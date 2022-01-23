@@ -17,9 +17,7 @@ function isCurrentRowFull(wordOnCurrentRow) {
 }
 
 function focusCell(idx) {
-  document
-    .querySelector(`.cell-${currentRowIndex}-${idx}`)
-    .focus();
+  document.querySelector(`.cell-${currentRowIndex}-${idx}`).focus();
 }
 
 function wordHasBeenGuessed(wordOnCurrentRow) {
@@ -30,49 +28,64 @@ function anyRowsLeft() {
   return currentRowIndex < MAX_TRIES - 1;
 }
 
-let wordOnCurrentRow = '';
+function getCurrentCell(wordOnCurrentRow) {
+  return document.querySelector(
+    `.cell-${currentRowIndex}-${wordOnCurrentRow.length}`
+  );
+}
 
 function addEventListeners() {
-  document.querySelectorAll('.cell').forEach((cell) => {
-    cell.addEventListener('keyup', function (e) {
-      wordOnCurrentRow += e.target.value;
+  document.addEventListener('keyup', function (e) {
+    // check if input is a letter
+    if (e.key.length !== 1 || !/[a-zA-Z]/.test(e.key)) {
+      return;
+    }
 
-      //   if row isn't full, only move to next cell
-      if (!isCurrentRowFull(wordOnCurrentRow)) {
-        focusCell(wordOnCurrentRow.length);
-        return;
-      }
+    const cellsOnCurrentRow = document.querySelectorAll(
+      `.cell-${currentRowIndex}`
+    );
+    
+    let wordOnCurrentRow = '';
 
-      //   word has been correctly guessed
-      if (wordHasBeenGuessed(wordOnCurrentRow)) {
-        handleWin();
-        return;
-      }
-
-      //   word hasn't been guessed yet, but row is full
-      //   color the cells
-      const cells = document.querySelectorAll(`.cell-${currentRowIndex}`);
-
-      cells.forEach((cell, idx) => {
-        if (cell.value === wordToBeGuessed[idx]) {
-          cell.classList.add('exactMatch');
-        } else if (wordToBeGuessed.indexOf(cell.value) !== -1) {
-          cell.classList.add('match');
-        } else {
-          cell.classList.add('noMatch');
-        }
-
-        cell.setAttribute('disabled', true);
-      });
-
-      //   move focus to next row, if any rows are left
-      if (anyRowsLeft) {
-        currentRowIndex++;
-        wordOnCurrentRow = '';
-
-        focusCell(0);
-      }
+    cellsOnCurrentRow.forEach((cell) => {
+      wordOnCurrentRow += cell.innerText;
     });
+
+    const currentCell = getCurrentCell(wordOnCurrentRow);
+
+    currentCell.innerText = e.key;
+    wordOnCurrentRow += e.key;
+
+    if (!isCurrentRowFull(wordOnCurrentRow)) {
+      return;
+    }
+
+    //   word has been correctly guessed
+    if (wordHasBeenGuessed(wordOnCurrentRow)) {
+      handleWin();
+      return;
+    }
+
+    //   word hasn't been guessed yet, but row is full
+    //   color the cells
+    const cells = document.querySelectorAll(`.cell-${currentRowIndex}`);
+
+    cells.forEach((cell, idx) => {
+      if (cell.innerText === wordToBeGuessed[idx]) {
+        cell.classList.add('exactMatch');
+      } else if (wordToBeGuessed.indexOf(cell.innerText) !== -1) {
+        cell.classList.add('match');
+      } else {
+        cell.classList.add('noMatch');
+      }
+
+      cell.setAttribute('disabled', true);
+    });
+
+    //   move to next row, if any rows are left
+    if (anyRowsLeft) {
+      currentRowIndex++;
+    }
   });
 }
 
@@ -83,14 +96,8 @@ function handleWin() {
   console.log('YOU WON');
 }
 
-function focusFirstCell() {
-  const firstCell = document.querySelector('.cell-0-0');
-  firstCell.focus();
-}
-
 function initGame() {
   createGrid();
-  focusFirstCell();
   addEventListeners();
 }
 
