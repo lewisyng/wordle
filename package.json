@@ -2,7 +2,7 @@
   "name": "wordle",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "app.ts",
   "scripts": {
     "dev": "webpack serve",
     "build": "webpack",
