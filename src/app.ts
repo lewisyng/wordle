@@ -1,11 +1,10 @@
+import './app.scss';
 import Grid from './Grid';
 import words from './words';
-import '../public/index.css';
+import { showRules } from './Rules';
 
 const MAX_WORD_LENGTH = 5;
 const MAX_TRIES = 5;
-// let wordToBeGuessed = getRandomWordFromList();
-// calculate random numbe between two numbers
 const randomIndex = Math.floor(Math.random() * words.length);
 let wordToBeGuessed = words[randomIndex];
 console.log('wordToBeGuessed', wordToBeGuessed);
@@ -127,6 +126,9 @@ function handleWin() {
 }
 
 function initGame() {
+    if (!localStorage.getItem('rulesWereRead')) {
+        showRules();
+    }
     new Grid();
     addEventListeners();
 }

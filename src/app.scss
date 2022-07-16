@@ -1,5 +1,11 @@
-*, *::before, *::after {
-  box-sizing: border-box;
+@import './base.scss';
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -9,18 +15,18 @@ body {
 
 :root {
     --background: #121213;
-    --exactMatch: #538D4E;
-    --match: #B59F3B;
+    --exactMatch: #538d4e;
+    --match: #b59f3b;
     --noMatch: #121213;
-    --text-col: #D7DADC;
-    --cell-border-col: #3A3A3C;
+    --text-col: #d7dadc;
+    --cell-border-col: #3a3a3c;
     --cell-with-input-border-col: #565758;
     --keyboard-key-bg: #818384;
 }
 
 #heading {
     text-align: center;
-    color: var(--text-col); 
+    color: var(--text-col);
 }
 
 #root {
